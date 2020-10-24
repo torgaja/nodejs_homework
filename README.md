@@ -20,7 +20,7 @@ npm install
 
 ## Usage
 
-Before starting the application make sure to check and modify the configuration within ./config/config.json. This manual assumes that you have a live MongoDB to which this application can connect and you know the corresponding URI.
+Before starting the application make sure to check and modify the configuration within `./config/config.json`. This manual assumes that you have a live MongoDB to which this application can connect and you know the corresponding URI.
 
 Start the application by typing in the project root (where index.js and package.json is):
 
@@ -29,7 +29,7 @@ Start the application by typing in the project root (where index.js and package.
 node index.js
 ```
 
-From now on the application rund and implements the following http endpoints:
+From now on the application is running and implements the following http endpoints:
 
 * GET    /records/:id This endpoint returns the single record that has the specified id. If the provided id does not exists it returnes with an ERROR message. If no id is given (GET /records) the application returns all the records.
 * POST   /records This endpoint inserts the object given in the body of the request (it is expected in JSON format). The JSON has to have an id member all other fields are optional. If the id already exists in the DB it returns with the following ERROR message: `ERROR! id: XX exists!`
