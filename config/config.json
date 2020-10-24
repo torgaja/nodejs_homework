@@ -1,5 +1,5 @@
 {
-  "app_nape": "homework",
+  "app_name": "homework",
   "node_port": 8090,
   "json_indentation": 4,
   "mongo_db_config": {
