@@ -1,0 +1,10 @@
+{
+  "app_nape": "homework",
+  "node_port": 8090,
+  "json_indentation": 4,
+  "mongo_db_config": {
+    "uri": "mongodb://localhost:27017/",
+    "db_name": "homework",
+    "collection_name": "records"
+  }
+}
