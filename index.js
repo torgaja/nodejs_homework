@@ -7,6 +7,7 @@ const uri = config.mongo_db_config.uri;
 const mycollection = config.mongo_db_config.collection_name;
 const mydb = config.mongo_db_config.db_name;
 const client = new MongoClient(uri, { useNewUrlParser: true });
+const mongodbReturnOptions = {projection:{_id:0}};
 
 client.connect();
 
@@ -42,7 +43,7 @@ app.post('/records', async (req, res) => {
 
 app.get("/records/:id", async (req,res) =>{
     console.log(req.params)
-    await client.db(mydb).collection(mycollection).findOne(req.params, {},(error,result) => {
+    await client.db(mydb).collection(mycollection).findOne(req.params, mongodbReturnOptions,(error,result) => {
         if (!error) {
             if(result) {
                 console.log(result)
@@ -62,13 +63,13 @@ app.get("/records/:id", async (req,res) =>{
 
 app.get("/records", async (req,res) =>{
     console.log("Asking for all elements from db!")
-    const cursor = await client.db(mydb).collection(mycollection).find();
+    const cursor = await client.db(mydb).collection(mycollection).find({},mongodbReturnOptions);
     console.log(await cursor.toArray())
     res.send(await cursor.toArray())
 });
 
 app.delete("/records/:id", async (req,res) =>{
-    await client.db(mydb).collection(mycollection).findOneAndDelete(req.params, {},
+    await client.db(mydb).collection(mycollection).findOneAndDelete(req.params, mongodbReturnOptions,
         async (error,result) => {
         if (!error) {
             if (result.value) {
